@@ -3,12 +3,12 @@
 Summary:	Console audio player with simple ncurses interface
 Summary(pl):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
-Version:	1.1.0
-Release:	1
+Version:	2.0.0
+Release:	0.1
 License:	GPL
 Group:		Applications/Sound
-Source0:	ftp://ftp.daper.net/pub/soft/moc/%{name}-%{version}.tar.gz
-# Source0-md5:	20102e29d0c2e87287295aba424a5cf0
+Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.gz
+# Source0-md5:	546989539f3b3dcc679cd6a070784932
 Patch0:		%{name}-ncurses.patch
 URL:		http://moc.daper.net/
 BuildRequires:	autoconf
@@ -42,7 +42,7 @@ CFLAGS="-I/usr/include/ncurses %{rpmcflags}"
 %{__autoconf}
 %{__automake}
 %configure \
-	--disable-version-checker
+ 	--disable-version-checker
 %{__make}
 
 %install
