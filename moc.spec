@@ -8,6 +8,7 @@ Release:	1
 License:	GPL
 Group:		Applications/Sound
 Source0:	ftp://ftp.daper.net/pub/soft/moc/%{name}-%{version}.tar.gz
+# Source0-md5:	20102e29d0c2e87287295aba424a5cf0
 Patch0:		%{name}-ncurses.patch
 URL:		http://moc.daper.net
 BuildRequires:	libao-devel
