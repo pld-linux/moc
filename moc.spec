@@ -14,8 +14,8 @@ URL:		http://moc.daper.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libao-devel
+BuildRequires:	libmad-devel
 BuildRequires:	libvorbis-devel
-BuildRequires:	mad-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
