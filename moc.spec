@@ -22,12 +22,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 MOC is a console audio player with simple ncurses interface in
-playmp3list style. It supports MP3, OGG and WAV formats. It has all
+playmp3list style. It supports MP3, Ogg and WAV formats. It has all
 functions one may expect from simple audio player
 
 %description -l pl
 MOC to konsolowy odtwarzacz audio z prostym interfejsem budz±cym
-skojarzenia z playmp3list. Obs³uguje formaty MP3, OGG oraz WAV. Ma
+skojarzenia z playmp3list. Obs³uguje formaty MP3, Ogg oraz WAV. Ma
 wszystkie funkcje, których spodziewa³by¶ siê w prostym odtwarzaczu
 audio.
 
