@@ -11,6 +11,8 @@ Source0:	ftp://ftp.daper.net/pub/soft/moc/%{name}-%{version}.tar.gz
 # Source0-md5:	20102e29d0c2e87287295aba424a5cf0
 Patch0:		%{name}-ncurses.patch
 URL:		http://moc.daper.net/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	libao-devel
 BuildRequires:	libvorbis-devel
 BuildRequires:	mad-devel
@@ -47,7 +49,8 @@ CFLAGS="-I/usr/include/ncurses %{rpmcflags}"
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
