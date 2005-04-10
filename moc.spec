@@ -20,6 +20,7 @@ BuildRequires:	libmad-devel
 BuildRequires:	libsndfile-devel
 BuildRequires:	libvorbis-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	pkgconfig
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
