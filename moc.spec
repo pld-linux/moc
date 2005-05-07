@@ -9,7 +9,6 @@ License:	GPL
 Group:		Applications/Sound
 Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.gz
 # Source0-md5:	992f64aee3a2bba83ee15b834bd796fb
-Patch0:		%{name}-ncurses.patch
 URL:		http://moc.daper.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -37,7 +36,6 @@ audio.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 CFLAGS="-I/usr/include/ncurses %{rpmcflags}"
