@@ -3,36 +3,45 @@
 Summary:	Console audio player with simple ncurses interface
 Summary(pl):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
-Version:	2.2.2
+Version:	2.3.0
 Release:	1
 License:	GPL
 Group:		Applications/Sound
-Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.gz
-# Source0-md5:	844beea63592bc1c88da2aa30dc7421e
+Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
+# Source0-md5:	3d5d152c28f6e40162058fc1566c8109
 URL:		http://moc.daper.net/
 BuildRequires:	autoconf
+BuildRequires:	autogen
 BuildRequires:	automake
+BuildRequires:	curl-devel
 BuildRequires:	flac-devel
 BuildRequires:	libao-devel
 BuildRequires:	libid3tag-devel
 BuildRequires:	libmad-devel
+BuildRequires:	libmpcdec-devel >= 1.2
+BuildRequires:	libsamplerate-devel
 BuildRequires:	libsndfile-devel
 BuildRequires:	libvorbis-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	pkgconfig
+BuildRequires:	taglib-devel >= 1.3.1
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 MOC is a console audio player with simple ncurses interface in
-playmp3list style. It supports MP3, Ogg and WAV formats. It has all
-functions one may expect from simple audio player
+playmp3list style. It supports MP3, Ogg, FLAC, Musepack, Speex, WAV
+and other less popular formats supported by libsndfiles. It has 
+all functions one may expect from simple audio player. Now it serves 
+streams net (shoutcast, icecast, regular HTTP, FTP) also.
 
 %description -l pl
 MOC to konsolowy odtwarzacz audio z prostym interfejsem budz±cym
-skojarzenia z playmp3list. Obs³uguje formaty MP3, Ogg oraz WAV. Ma
-wszystkie funkcje, których spodziewa³by¶ siê w prostym odtwarzaczu
-audio.
+skojarzenia z playmp3list. Obs³uguje formaty MP3, Oggg, FLAC, 
+Musepack, Speex, WAV oraz inne mniej popularne formaty wspierane przez
+bibliotekê libsndfiles. Ma wszystkie funkcje, których spodziewa³by¶
+siê w prostym odtwarzaczu audio. Teraz tak¿e obs³uguje potoki sieciowe 
+(shoutcast, icecast, HTTP, FTP).
 
 %prep
 %setup -q
@@ -43,9 +52,7 @@ CFLAGS="-I/usr/include/ncurses %{rpmcflags}"
 %{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
-%configure \
- 	--disable-version-checker \
-	--disable-debug
+%configure --disable-debug 
 
 %{__make}
 
@@ -57,6 +64,7 @@ install -d $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 rm $RPM_BUILD_ROOT%{_docdir}/%{name}/*
+rm -f $RPM_BUILD_ROOT%{_libdir}/moc/decoder_plugins/lib*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -67,3 +75,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_mandir}/man8/mocp*
+%{_libdir}/moc/decoder_plugins/lib*.so
