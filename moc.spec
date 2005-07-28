@@ -17,6 +17,7 @@ BuildRequires:	curl-devel
 BuildRequires:	flac-devel
 BuildRequires:	libao-devel
 BuildRequires:	libid3tag-devel
+BuildRequires:	libltdl-devel
 BuildRequires:	libmad-devel
 BuildRequires:	libmpcdec-devel >= 1.2
 BuildRequires:	libsamplerate-devel
@@ -31,17 +32,17 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 MOC is a console audio player with simple ncurses interface in
 playmp3list style. It supports MP3, Ogg, FLAC, Musepack, Speex, WAV
-and other less popular formats supported by libsndfiles. It has 
-all functions one may expect from simple audio player. Now it serves 
-streams net (shoutcast, icecast, regular HTTP, FTP) also.
+and other less popular formats supported by libsndfile. It has 
+all functions one may expect from simple audio player. Now it supports
+net streams (shoutcast, icecast, regular HTTP, FTP) also.
 
 %description -l pl
 MOC to konsolowy odtwarzacz audio z prostym interfejsem budz±cym
-skojarzenia z playmp3list. Obs³uguje formaty MP3, Oggg, FLAC, 
+skojarzenia z playmp3list. Obs³uguje formaty MP3, Ogg, FLAC, 
 Musepack, Speex, WAV oraz inne mniej popularne formaty wspierane przez
-bibliotekê libsndfiles. Ma wszystkie funkcje, których spodziewa³by¶
-siê w prostym odtwarzaczu audio. Teraz tak¿e obs³uguje potoki sieciowe 
-(shoutcast, icecast, HTTP, FTP).
+bibliotekê libsndfile. Ma wszystkie funkcje, których mo¿na spodziewaæ
+siê w prostym odtwarzaczu audio. Teraz tak¿e obs³uguje strumienie
+sieciowe (shoutcast, icecast, HTTP, FTP).
 
 %prep
 %setup -q
@@ -52,7 +53,8 @@ CFLAGS="-I/usr/include/ncurses %{rpmcflags}"
 %{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
-%configure --disable-debug 
+%configure \
+	--disable-debug 
 
 %{__make}
 
@@ -73,6 +75,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog README TODO NEWS AUTHORS THANKS *.example
 %attr(755,root,root) %{_bindir}/*
+%dir %{_libdir}/moc
+%dir %{_libdir}/moc/decoder_plugins
+%attr(755,root,root) %{_libdir}/moc/decoder_plugins/lib*.so
 %{_datadir}/%{name}
 %{_mandir}/man8/mocp*
-%{_libdir}/moc/decoder_plugins/lib*.so
