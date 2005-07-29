@@ -10,6 +10,7 @@ Group:		Applications/Sound
 Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
 # Source0-md5:	3d5d152c28f6e40162058fc1566c8109
 URL:		http://moc.daper.net/
+BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	curl-devel
