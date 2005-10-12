@@ -22,6 +22,7 @@ BuildRequires:	libmad-devel
 BuildRequires:	libmpcdec-devel >= 1.2
 BuildRequires:	libsamplerate-devel
 BuildRequires:	libsndfile-devel
+BuildRequires:	libtool
 BuildRequires:	libvorbis-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	pkgconfig
@@ -65,7 +66,7 @@ install -d $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm $RPM_BUILD_ROOT%{_docdir}/%{name}/*
+rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}
 rm -f $RPM_BUILD_ROOT%{_libdir}/moc/decoder_plugins/lib*.la
 
 %clean
@@ -73,7 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog README TODO NEWS AUTHORS THANKS *.example
+%doc AUTHORS NEWS README THANKS TODO *.example
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/moc
 %dir %{_libdir}/moc/decoder_plugins
