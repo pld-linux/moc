@@ -1,14 +1,15 @@
 
 # I know, console<->terminal
+%define	_beta	beta1
 Summary:	Console audio player with simple ncurses interface
 Summary(pl):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
-Version:	2.3.2
-Release:	1
+Version:	2.4.0
+Release:	1%{_beta}
 License:	GPL
 Group:		Applications/Sound
-Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	d01e1af79d4ac1202be3f7e0c63b0a7b
+Source0:	ftp://ftp.daper.net/pub/soft/moc/unstable/%{name}-%{version}-%{_beta}.tar.bz2
+# Source0-md5:	c5f534e5ee0cc080f0c0c89f5a8c53cd
 URL:		http://moc.daper.net/
 BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf
@@ -46,7 +47,7 @@ siê w prostym odtwarzaczu audio. Teraz tak¿e obs³uguje strumienie
 sieciowe (shoutcast, icecast, HTTP, FTP).
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-%{_beta}
 
 %build
 CFLAGS="-I/usr/include/ncurses %{rpmcflags}"
