@@ -1,0 +1,22 @@
+diff -Nur moc-2.4.0-beta1.org/options.c moc-2.4.0-beta1/options.c
+--- moc-2.4.0-beta1.org/options.c	2006-01-21 10:53:41.000000000 +0100
++++ moc-2.4.0-beta1/options.c	2006-01-21 14:13:55.000000000 +0100
+@@ -137,7 +137,8 @@
+ void options_init ()
+ {
+ 	memset (options, 0, sizeof(options));
+-
++	char* moc_dir = getenv("HOME_ETC");
++	strcat(moc_dir,"/.moc");
+ 	option_add_int ("ReadTags", 1);
+ 	option_add_str ("MusicDir", NULL);
+ 	option_add_int ("StartInMusicDir", 0);
+@@ -164,7 +165,7 @@
+ 	option_add_str ("Theme", NULL);
+ 	option_add_str ("XTermTheme", NULL);
+ 	option_add_str ("ForceTheme", NULL); /* Used when -T is set */
+-	option_add_str ("MOCDir", "~/.moc");
++	option_add_str ("MOCDir", moc_dir);
+ 	option_add_int ("UseMmap", 1);
+ 	option_add_int ("Precache", 1);
+ 	option_add_int ("SavePlaylist", 1);
