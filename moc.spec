@@ -1,5 +1,5 @@
 # FIX:
-# - ffmpeg decoder don't want to install
+# - ffmpeg decoder doesn't want to install
 #
 # bconds:
 %bcond_without	home_etc    # disable HOME_ETC support
@@ -36,7 +36,8 @@ BuildRequires:	pkgconfig
 BuildRequires:	taglib-devel >= 1.3.1
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-%define	_decoder_plugins	%{_libdir}/%{name}/decoder_plugins
+
+%define		_decoder_plugins	%{_libdir}/%{name}/decoder_plugins
 
 %description
 MOC is a console audio player with simple ncurses interface in
@@ -57,101 +58,91 @@ sieciowe (shoutcast, icecast, HTTP, FTP).
 Summary:	MP3 decoder for MoC - Music on Console
 Summary(pl):	Dekoder MP3 dla MOC
 Group:		Applications/Sound
-Requires:       %{name} = %{version}-%{release}
-Requires:	libmad 
-Requires:	libid3tag
-Provides:       %{name}-input = %{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
+Provides:	%{name}-input = %{version}-%{release}
 
 %description mp3
 This package contains the MP3 decoder.
 After install you should reload MOC player.
 
-%description -l pl
-Ten pakiet zawiera dekodowanie formatu MP3
-Po zainstalowaniu nale¿y uruchomiæ ponownie MOC
+%description mp3 -l pl
+Ten pakiet zawiera dekodowanie formatu MP3.
+Po zainstalowaniu nale¿y uruchomiæ ponownie MOC.
 
 %package musepack
 Summary:	Musepack (MPC) decoder for MoC - Music on Console
 Summary(pl):	Dekoder Musepack (MPC) dla MOC
 Group:		Applications/Sound
-Requires:	libmpcdec 
-Requires:	taglib
-Requires:       %{name} = %{version}-%{release}
-Provides:       %{name}-input = %{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
+Provides:	%{name}-input = %{version}-%{release}
 
 %description musepack
-This package contains the Musepack (MPC) decoder
+This package contains the Musepack (MPC) decoder.
 After install you should reload MOC player.
 
 %description musepack -l pl
-Ten pakiet zawiera dekodowanie formatu Musepack (MPC)
-Po zainstalowaniu nale¿y uruchomiæ ponownie MOC
+Ten pakiet zawiera dekodowanie formatu Musepack (MPC).
+Po zainstalowaniu nale¿y uruchomiæ ponownie MOC.
 
 %package ogg
 Summary:	Ogg decoder for MoC - Music on Console
 Summary(pl):	Dekoder Ogg dla MOC
 Group:		Applications/Sound
-Requires:	libogg 
-Requires:	libvorbis
-Requires:       %{name} = %{version}-%{release}
-Provides:       %{name}-input = %{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
+Provides:	%{name}-input = %{version}-%{release}
 
 %description ogg
-This package contains the ogg decoder
+This package contains the Ogg decoder.
 After install you should reload MOC player.
 
 %description ogg -l pl
-Ten pakiet zawiera dekodowanie formatu Ogg
+Ten pakiet zawiera dekodowanie formatu Ogg.
 Po zainstalowaniu nale¿y uruchomiæ ponownie MOC
 
 %package flac
 Summary:	FLAC decoder for MoC - Music on Console
 Summary(pl):	Dekoder FLAC dla MOC
 Group:		Applications/Sound
-Requires:	flac
-Requires:       %{name} = %{version}-%{release}
-Provides:       %{name}-input = %{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
+Provides:	%{name}-input = %{version}-%{release}
 
 %description flac
-This package contains the FLAC decoder
+This package contains the FLAC decoder.
 After install you should reload MOC player.
 
 %description flac -l pl
-Ten pakiet zawiera dekodowanie formatu FLAC
-Po zainstalowaniu nale¿y uruchomiæ ponownie MOC
+Ten pakiet zawiera dekodowanie formatu FLAC.
+Po zainstalowaniu nale¿y uruchomiæ ponownie MOC.
 
 %package sndfile
 Summary:	Decoder of the sndfile formats for MoC - Music on Console
 Summary(pl):	Dekoder plików WAV/AIFF
 Group:		Applications/Sound
-Requires:	libsndfile
-Requires:       %{name} = %{version}-%{release}
-Provides:       %{name}-input = %{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
+Provides:	%{name}-input = %{version}-%{release}
 
 %description sndfile
-This package contains the decoders of sndfile
+This package contains the decoders of sndfile.
 After install you should reload MOC player.
 
 %description sndfile -l pl
-Ten pakiet zapewnia dekodowanie plików WAV/AIFF
-Po zainstalowaniu nale¿y uruchomiæ ponownie MOC
+Ten pakiet zapewnia dekodowanie plików WAV/AIFF.
+Po zainstalowaniu nale¿y uruchomiæ ponownie MOC.
 
 %package speex
 Summary:	Speex decoder for MoC - Music on Console
 Summary(pl):	Dekoder formatu Speex dla MOC
 Group:		Applications/Sound
-Requires:	speex
-Requires:       %{name} = %{version}-%{release}
-Provides:       %{name}-input = %{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
+Provides:	%{name}-input = %{version}-%{release}
 
 %description speex
-This package contains the Speex decoder
+This package contains the Speex decoder.
 After install you should reload MOC player.
 
 %description speex -l pl
-Ten pakiet zapewnia dekodowanie formatu Speex
-Po zainstalowaniu nale¿y uruchomiæ ponownie MOC
-
+Ten pakiet zapewnia dekodowanie formatu Speex.
+Po zainstalowaniu nale¿y uruchomiæ ponownie MOC.
 
 %prep
 %setup -q -n %{name}-%{version}-%{_status}
@@ -186,31 +177,30 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS NEWS README THANKS TODO *.example
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/moc
-#%dir %{_libdir}/moc/decoder_plugins
-#%attr(755,root,root) %{_libdir}/moc/decoder_plugins/lib*.so
+%dir %{_libdir}/moc/decoder_plugins
 %{_datadir}/%{name}
 %{_mandir}/man1/mocp*
 
 %files musepack
-%defattr(-, root, root)
-%{_decoder_plugins}/libmusepack_decoder.*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_decoder_plugins}/libmusepack_decoder.so*
 
 %files flac
-%defattr(-, root, root)
-%{_decoder_plugins}/libflac_decoder.*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_decoder_plugins}/libflac_decoder.so*
 
 %files mp3
-%defattr(-, root, root)
-%{_decoder_plugins}/libmp3_decoder.*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_decoder_plugins}/libmp3_decoder.so*
 
 %files ogg
-%defattr(-, root, root)
-%{_decoder_plugins}/libvorbis_decoder.*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_decoder_plugins}/libvorbis_decoder.so*
 
 %files sndfile
-%defattr(-, root, root)
-%{_decoder_plugins}/libsndfile_formats_decoder.*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_decoder_plugins}/libsndfile_formats_decoder.so*
 
 %files speex
-%defattr(-, root, root)
-%{_decoder_plugins}/libspeex_decoder.*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_decoder_plugins}/libspeex_decoder.so*
