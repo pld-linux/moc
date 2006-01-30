@@ -5,7 +5,7 @@
 %bcond_without	home_etc    # disable HOME_ETC support
 #
 
-%define	_status	beta1
+%define	_status	beta2
 Summary:	Console audio player with simple ncurses interface
 Summary(pl):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
@@ -14,7 +14,7 @@ Release:	0.%{_status}.1
 License:	GPL
 Group:		Applications/Sound
 Source0:	ftp://ftp.daper.net/pub/soft/moc/unstable/%{name}-%{version}-%{_status}.tar.bz2
-# Source0-md5:	c5f534e5ee0cc080f0c0c89f5a8c53cd
+# Source0-md5:	cbdc3139ad077130646f4763e6a4994d
 Patch0:		%{name}-home_etc.patch
 URL:		http://moc.daper.net/
 BuildRequires:	alsa-lib-devel
