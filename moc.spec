@@ -2,7 +2,6 @@
 # bconds:
 %bcond_without	home_etc    # disable HOME_ETC support
 #
-
 Summary:	Console audio player with simple ncurses interface
 Summary(pl):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
@@ -10,7 +9,7 @@ Version:	2.4.0
 Release:	1
 License:	GPL
 Group:		Applications/Sound
-Source0:	ftp://ftp.daper.net/pub/soft/%{name}/stable/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
 # Source0-md5:	5b31665390fb0b30d19dadec4e90abb8
 Patch0:		%{name}-home_etc.patch
 URL:		http://moc.daper.net/
@@ -95,7 +94,7 @@ After install you should reload MOC player.
 
 %description ogg -l pl
 Ten pakiet zawiera dekodowanie formatu Ogg.
-Po zainstalowaniu nale¿y uruchomiæ ponownie MOC
+Po zainstalowaniu nale¿y uruchomiæ ponownie MOC.
 
 %package flac
 Summary:	FLAC decoder for MoC - Music on Console
@@ -107,6 +106,10 @@ Provides:	%{name}-input = %{version}-%{release}
 %description flac
 This package contains the FLAC decoder.
 After install you should reload MOC player.
+
+%description flac -l pl
+Ten pakiet zawiera dekodowanie formatu FLAC.
+Po zainstalowaniu nale¿y uruchomiæ ponownie MOC.
 
 %package ffmpeg
 Summary:	ffmpeg decoder for MoC - Music on Console
