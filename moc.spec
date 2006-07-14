@@ -6,7 +6,7 @@ Summary:	Console audio player with simple ncurses interface
 Summary(pl):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
 Version:	2.4.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Sound
 Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
@@ -18,6 +18,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	curl-devel
 BuildRequires:	ffmpeg-devel
+BuildRequires:	speex-devel
 BuildRequires:	flac-devel
 BuildRequires:	libao-devel
 BuildRequires:	libid3tag-devel
