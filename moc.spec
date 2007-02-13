@@ -3,7 +3,7 @@
 %bcond_without	home_etc    # disable HOME_ETC support
 #
 Summary:	Console audio player with simple ncurses interface
-Summary(pl.UTF-8):   Konsolowy odtwarzacz audio z prostym interfejsem ncurses
+Summary(pl.UTF-8):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
 Version:	2.4.1
 Release:	4
@@ -55,7 +55,7 @@ sieciowe (shoutcast, icecast, HTTP, FTP).
 
 %package mp3
 Summary:	MP3 decoder for MoC - Music on Console
-Summary(pl.UTF-8):   Dekoder MP3 dla MOC
+Summary(pl.UTF-8):	Dekoder MP3 dla MOC
 Group:		Applications/Sound
 Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-input = %{version}-%{release}
@@ -70,7 +70,7 @@ Po zainstalowaniu należy uruchomić ponownie MOC.
 
 %package musepack
 Summary:	Musepack (MPC) decoder for MoC - Music on Console
-Summary(pl.UTF-8):   Dekoder Musepack (MPC) dla MOC
+Summary(pl.UTF-8):	Dekoder Musepack (MPC) dla MOC
 Group:		Applications/Sound
 Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-input = %{version}-%{release}
@@ -85,7 +85,7 @@ Po zainstalowaniu należy uruchomić ponownie MOC.
 
 %package ogg
 Summary:	Ogg decoder for MoC - Music on Console
-Summary(pl.UTF-8):   Dekoder Ogg dla MOC
+Summary(pl.UTF-8):	Dekoder Ogg dla MOC
 Group:		Applications/Sound
 Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-input = %{version}-%{release}
@@ -100,7 +100,7 @@ Po zainstalowaniu należy uruchomić ponownie MOC.
 
 %package flac
 Summary:	FLAC decoder for MoC - Music on Console
-Summary(pl.UTF-8):   Dekoder FLAC dla MOC
+Summary(pl.UTF-8):	Dekoder FLAC dla MOC
 Group:		Applications/Sound
 Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-input = %{version}-%{release}
@@ -115,7 +115,7 @@ Po zainstalowaniu należy uruchomić ponownie MOC.
 
 %package ffmpeg
 Summary:	ffmpeg decoder for MoC - Music on Console
-Summary(pl.UTF-8):   Dekoder ffmpeg dla MOC
+Summary(pl.UTF-8):	Dekoder ffmpeg dla MOC
 Group:		Applications/Sound
 Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-input = %{version}-%{release}
@@ -131,7 +131,7 @@ Po zainstalowaniu należy uruchomić ponownie MOC.
 
 %package sndfile
 Summary:	Decoder of the sndfile formats for MoC - Music on Console
-Summary(pl.UTF-8):   Dekoder plików WAV/AIFF
+Summary(pl.UTF-8):	Dekoder plików WAV/AIFF
 Group:		Applications/Sound
 Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-input = %{version}-%{release}
@@ -146,7 +146,7 @@ Po zainstalowaniu należy uruchomić ponownie MOC.
 
 %package speex
 Summary:	Speex decoder for MoC - Music on Console
-Summary(pl.UTF-8):   Dekoder formatu Speex dla MOC
+Summary(pl.UTF-8):	Dekoder formatu Speex dla MOC
 Group:		Applications/Sound
 Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-input = %{version}-%{release}
