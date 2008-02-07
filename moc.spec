@@ -6,7 +6,7 @@ Summary:	Console audio player with simple ncurses interface
 Summary(pl.UTF-8):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
 Version:	2.4.1
-Release:	5
+Release:	6
 License:	GPL
 Group:		Applications/Sound
 Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
@@ -20,7 +20,6 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	curl-devel
 BuildRequires:	ffmpeg-devel
-BuildRequires:	speex-devel
 BuildRequires:	flac-devel >= 1.1.3
 BuildRequires:	libao-devel
 BuildRequires:	libid3tag-devel
@@ -33,6 +32,7 @@ BuildRequires:	libtool
 BuildRequires:	libvorbis-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	pkgconfig
+BuildRequires:	speex-devel
 BuildRequires:	taglib-devel >= 1.3.1
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -42,14 +42,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 MOC is a console audio player with simple ncurses interface in
 playmp3list style. It supports MP3, Ogg, FLAC, Musepack, Speex, WAV
-and other less popular formats supported by libsndfile. It has 
-all functions one may expect from simple audio player. Now it supports
-net streams (shoutcast, icecast, regular HTTP, FTP) also.
+and other less popular formats supported by libsndfile. It has all
+functions one may expect from simple audio player. Now it supports net
+streams (shoutcast, icecast, regular HTTP, FTP) also.
 
 %description -l pl.UTF-8
 MOC to konsolowy odtwarzacz audio z prostym interfejsem budzącym
-skojarzenia z playmp3list. Obsługuje formaty MP3, Ogg, FLAC, 
-Musepack, Speex, WAV oraz inne mniej popularne formaty wspierane przez
+skojarzenia z playmp3list. Obsługuje formaty MP3, Ogg, FLAC, Musepack,
+Speex, WAV oraz inne mniej popularne formaty wspierane przez
 bibliotekę libsndfile. Ma wszystkie funkcje, których można spodziewać
 się w prostym odtwarzaczu audio. Teraz także obsługuje strumienie
 sieciowe (shoutcast, icecast, HTTP, FTP).
@@ -62,12 +62,12 @@ Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-input = %{version}-%{release}
 
 %description mp3
-This package contains the MP3 decoder.
-After install you should reload MOC player.
+This package contains the MP3 decoder. After install you should reload
+MOC player.
 
 %description mp3 -l pl.UTF-8
-Ten pakiet zawiera dekodowanie formatu MP3.
-Po zainstalowaniu należy uruchomić ponownie MOC.
+Ten pakiet zawiera dekodowanie formatu MP3. Po zainstalowaniu należy
+uruchomić ponownie MOC.
 
 %package musepack
 Summary:	Musepack (MPC) decoder for MoC - Music on Console
@@ -77,12 +77,12 @@ Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-input = %{version}-%{release}
 
 %description musepack
-This package contains the Musepack (MPC) decoder.
-After install you should reload MOC player.
+This package contains the Musepack (MPC) decoder. After install you
+should reload MOC player.
 
 %description musepack -l pl.UTF-8
-Ten pakiet zawiera dekodowanie formatu Musepack (MPC).
-Po zainstalowaniu należy uruchomić ponownie MOC.
+Ten pakiet zawiera dekodowanie formatu Musepack (MPC). Po
+zainstalowaniu należy uruchomić ponownie MOC.
 
 %package ogg
 Summary:	Ogg decoder for MoC - Music on Console
@@ -92,12 +92,12 @@ Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-input = %{version}-%{release}
 
 %description ogg
-This package contains the Ogg decoder.
-After install you should reload MOC player.
+This package contains the Ogg decoder. After install you should reload
+MOC player.
 
 %description ogg -l pl.UTF-8
-Ten pakiet zawiera dekodowanie formatu Ogg.
-Po zainstalowaniu należy uruchomić ponownie MOC.
+Ten pakiet zawiera dekodowanie formatu Ogg. Po zainstalowaniu należy
+uruchomić ponownie MOC.
 
 %package flac
 Summary:	FLAC decoder for MoC - Music on Console
@@ -107,12 +107,12 @@ Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-input = %{version}-%{release}
 
 %description flac
-This package contains the FLAC decoder.
-After install you should reload MOC player.
+This package contains the FLAC decoder. After install you should
+reload MOC player.
 
 %description flac -l pl.UTF-8
-Ten pakiet zawiera dekodowanie formatu FLAC.
-Po zainstalowaniu należy uruchomić ponownie MOC.
+Ten pakiet zawiera dekodowanie formatu FLAC. Po zainstalowaniu należy
+uruchomić ponownie MOC.
 
 %package ffmpeg
 Summary:	ffmpeg decoder for MoC - Music on Console
@@ -122,9 +122,8 @@ Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-input = %{version}-%{release}
 
 %description ffmpeg
-This package contains module to decode WMA (and others) 
-files.
-After install you should reload MOC player.
+This package contains module to decode WMA (and others) files. After
+install you should reload MOC player.
 
 %description ffmpeg -l pl.UTF-8
 Ten pakiet zawiera moduł dekodujący pliki w formacie WMA (i nie tylko)
@@ -138,12 +137,12 @@ Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-input = %{version}-%{release}
 
 %description sndfile
-This package contains the decoders of sndfile.
-After install you should reload MOC player.
+This package contains the decoders of sndfile. After install you
+should reload MOC player.
 
 %description sndfile -l pl.UTF-8
-Ten pakiet zapewnia dekodowanie plików WAV/AIFF.
-Po zainstalowaniu należy uruchomić ponownie MOC.
+Ten pakiet zapewnia dekodowanie plików WAV/AIFF. Po zainstalowaniu
+należy uruchomić ponownie MOC.
 
 %package speex
 Summary:	Speex decoder for MoC - Music on Console
@@ -153,12 +152,12 @@ Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-input = %{version}-%{release}
 
 %description speex
-This package contains the Speex decoder.
-After install you should reload MOC player.
+This package contains the Speex decoder. After install you should
+reload MOC player.
 
 %description speex -l pl.UTF-8
-Ten pakiet zapewnia dekodowanie formatu Speex.
-Po zainstalowaniu należy uruchomić ponownie MOC.
+Ten pakiet zapewnia dekodowanie formatu Speex. Po zainstalowaniu
+należy uruchomić ponownie MOC.
 
 %prep
 %setup -q
@@ -172,7 +171,7 @@ CFLAGS="-I/usr/include/ncurses %{rpmcflags}"
 %{__autoconf}
 %{__automake}
 %configure \
-	--disable-debug 
+	--disable-debug
 
 %{__make}
 
@@ -207,7 +206,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_decoder_plugins}/libflac_decoder.so*
 
 %files ffmpeg
-%defattr(664,root,root,755)
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_decoder_plugins}/libffmpeg_decoder.so
 
 %files mp3
