@@ -10,9 +10,8 @@ Release:	0.1
 License:	GPL
 Group:		Applications/Sound
 Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	7b760a9c05d3f50781d06ed2d83aaee8
+# Source0-md5:	8808082848e90eeec5415baaec7e98ad
 Patch0:		%{name}-home_etc.patch
-Patch1:		%{name}-flac.patch
 URL:		http://moc.daper.net/
 BuildRequires:	a52dec-libs-devel
 BuildRequires:	alsa-lib-devel
@@ -162,11 +161,11 @@ należy uruchomić ponownie MOC.
 %prep
 %setup -q
 %{?with_home_etc:%patch0 -p1}
-%patch1 -p1
 
 %build
 CFLAGS="-I/usr/include/ncurses %{rpmcflags}"
 
+%{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
