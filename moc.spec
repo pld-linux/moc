@@ -12,6 +12,7 @@ Group:		Applications/Sound
 Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
 # Source0-md5:	8808082848e90eeec5415baaec7e98ad
 Patch0:		%{name}-home_etc.patch
+Patch1:		%{name}-ffmpeg.patch
 URL:		http://moc.daper.net/
 BuildRequires:	a52dec-libs-devel
 BuildRequires:	alsa-lib-devel
@@ -161,6 +162,7 @@ należy uruchomić ponownie MOC.
 %prep
 %setup -q
 %{?with_home_etc:%patch0 -p1}
+%patch1 -p1
 
 %build
 CFLAGS="-I/usr/include/ncurses %{rpmcflags}"
