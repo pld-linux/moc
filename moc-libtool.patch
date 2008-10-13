@@ -1,0 +1,20 @@
+--- moc-2.4.3/Makefile.am.orig	2008-10-13 01:05:07.026757308 +0200
++++ moc-2.4.3/Makefile.am	2008-10-13 01:09:16.009645282 +0200
+@@ -40,8 +40,6 @@
+ 	       themes.h \
+ 	       keys.c \
+ 	       keys.h \
+-	       ltdl.c \
+-	       ltdl.h \
+ 	       io.c \
+ 	       io.h \
+ 	       compat.c \
+@@ -70,7 +68,7 @@
+ man_MANS = mocp.1
+ mocp_LDADD = @EXTRA_OBJS@
+ mocp_DEPENDENCIES = @EXTRA_OBJS@
+-mocp_LDFLAGS = @EXTRA_LIBS@
++mocp_LDFLAGS = @EXTRA_LIBS@ -lltdl
+ EXTRA_DIST = config.example mocp.1 THANKS keymap.example Doxyfile \
+ 	     doxy_pages/decoder_api.doxy doxy_pages/main_page.doxy \
+ 	     doxy_pages/sound_output_driver_api.doxy moc.spec.in \
