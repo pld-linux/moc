@@ -21,7 +21,7 @@ BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	curl-devel
-BuildRequires:	ffmpeg-devel
+BuildRequires:	ffmpeg-devel >= 0.4.9-4.20080822.1
 BuildRequires:	flac-devel >= 1.1.3
 BuildRequires:	libao-devel
 BuildRequires:	libid3tag-devel
