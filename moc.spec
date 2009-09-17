@@ -2,17 +2,20 @@
 # bconds:
 %bcond_without	home_etc    # disable HOME_ETC support
 #
+%define develversion alpha3
 Summary:	Console audio player with simple ncurses interface
 Summary(hu.UTF-8):	Konzolos audiólejátszó egyszerű ncurses felülettel
 Summary(pl.UTF-8):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
-Version:	2.4.4
-Release:	2
+Version:	2.5.0
+Release:	%{develversion}.1
 License:	GPL
 Group:		Applications/Sound
-Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	647c770a5542a4ae5437386807a89796
+Source0:	ftp://ftp.daper.net/pub/soft/moc/unstable/%{name}-%{version}-%{develversion}.tar.bz2
+# Source0-md5:	3621b5b065570f961125b010a02d6dd5
 Patch0:		%{name}-home_etc.patch
+Patch1:		%{name}-configure-in.patch
+Patch2:		%{name}-ffmpeg.patch
 URL:		http://moc.daper.net/
 BuildRequires:	a52dec-libs-devel
 BuildRequires:	alsa-lib-devel
@@ -203,14 +206,17 @@ Ten pakiet zapewnia dekodowanie formatu Speex. Po zainstalowaniu
 należy uruchomić ponownie MOC.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-%{develversion}
 %{?with_home_etc:%patch0 -p1}
+%patch1 -p1
+%patch2 -p1
 
 %build
-CFLAGS="-I/usr/include/ncurses %{rpmcflags}"
+CFLAGS="-I/usr/include/ncurses -I/usr/include/libavformat %{rpmcflags}"
 
 %{__libtoolize}
-%{__aclocal} -I m4
+%{__aclocal} -I m4 -I libltdl/m4
+%{__autoheader}
 %{__autoconf}
 %{__automake}
 %configure \
