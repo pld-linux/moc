@@ -3,6 +3,7 @@
 %bcond_without	home_etc    # disable HOME_ETC support
 #
 Summary:	Console audio player with simple ncurses interface
+Summary(hu.UTF-8):	Konzolos audiólejátszó egyszerű ncurses felülettel
 Summary(pl.UTF-8):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
 Version:	2.4.4
@@ -45,6 +46,14 @@ and other less popular formats supported by libsndfile. It has all
 functions one may expect from simple audio player. Now it supports net
 streams (shoutcast, icecast, regular HTTP, FTP) also.
 
+%description -l hu.UTF-8
+MOC egy konzolos audió lejátszó egyszerű ncurses felülettel
+playmp3list stílusban. MP3, Ogg, FLAC, Musepack, Speex, WAV és egyéb
+kevésbé elterjedt formátumokat támogat a libsndfile segítségével.
+Minden funkció megtalálható a programban, amelyet egy egyszerű audió
+lejátszótól elvárható. A hálózati streameket (shoutcast, icecast,
+általános HTTP, FTP) is támogatja.
+
 %description -l pl.UTF-8
 MOC to konsolowy odtwarzacz audio z prostym interfejsem budzącym
 skojarzenia z playmp3list. Obsługuje formaty MP3, Ogg, FLAC, Musepack,
@@ -55,6 +64,7 @@ sieciowe (shoutcast, icecast, HTTP, FTP).
 
 %package mp3
 Summary:	MP3 decoder for MoC - Music on Console
+Summary(hu.UTF-8):	MP3 formátum támogatása MoC-hoz
 Summary(pl.UTF-8):	Dekoder MP3 dla MOC
 Group:		Applications/Sound
 Requires:	%{name} = %{version}-%{release}
@@ -64,12 +74,17 @@ Provides:	%{name}-input = %{version}-%{release}
 This package contains the MP3 decoder. After install you should reload
 MOC player.
 
+%description mp3 -l hu.UTF-8
+Ez a csomag az MP3 dekódert tartalmazza. A telepítés után a MOC
+lejátsztót újra kell indítani.
+
 %description mp3 -l pl.UTF-8
 Ten pakiet zawiera dekodowanie formatu MP3. Po zainstalowaniu należy
 uruchomić ponownie MOC.
 
 %package musepack
 Summary:	Musepack (MPC) decoder for MoC - Music on Console
+Summary(hu.UTF-8):	Musepack (MPC) dekóder MoC-hoz
 Summary(pl.UTF-8):	Dekoder Musepack (MPC) dla MOC
 Group:		Applications/Sound
 Requires:	%{name} = %{version}-%{release}
@@ -79,12 +94,17 @@ Provides:	%{name}-input = %{version}-%{release}
 This package contains the Musepack (MPC) decoder. After install you
 should reload MOC player.
 
+%description musepack -l hu.UTF-8
+Ez a csomag a Musepack (MPC) dekódert tartalmazza. A telepítés után a
+MOC lejátsztót újra kell indítani.
+
 %description musepack -l pl.UTF-8
 Ten pakiet zawiera dekodowanie formatu Musepack (MPC). Po
 zainstalowaniu należy uruchomić ponownie MOC.
 
 %package ogg
 Summary:	Ogg decoder for MoC - Music on Console
+Summary(hu.UTF-8):	Ogg dekóder MOC-hoz
 Summary(pl.UTF-8):	Dekoder Ogg dla MOC
 Group:		Applications/Sound
 Requires:	%{name} = %{version}-%{release}
@@ -94,12 +114,17 @@ Provides:	%{name}-input = %{version}-%{release}
 This package contains the Ogg decoder. After install you should reload
 MOC player.
 
+%description ogg -l hu.UTF-8
+Ez a csomag az Ogg dekódert tartalmazza. A telepítés után a MOC
+lejátsztót újra kell indítani.
+
 %description ogg -l pl.UTF-8
 Ten pakiet zawiera dekodowanie formatu Ogg. Po zainstalowaniu należy
 uruchomić ponownie MOC.
 
 %package flac
 Summary:	FLAC decoder for MoC - Music on Console
+Summary(hu.UTF-8):	FLAC dekóder MOC-hoz
 Summary(pl.UTF-8):	Dekoder FLAC dla MOC
 Group:		Applications/Sound
 Requires:	%{name} = %{version}-%{release}
@@ -109,12 +134,17 @@ Provides:	%{name}-input = %{version}-%{release}
 This package contains the FLAC decoder. After install you should
 reload MOC player.
 
+%description flac -l hu.UTF-8
+Ez a csomag az FLAC dekódert tartalmazza. A telepítés után a MOC
+lejátsztót újra kell indítani.
+
 %description flac -l pl.UTF-8
 Ten pakiet zawiera dekodowanie formatu FLAC. Po zainstalowaniu należy
 uruchomić ponownie MOC.
 
 %package ffmpeg
 Summary:	ffmpeg decoder for MoC - Music on Console
+Summary(hu.UTF-8):	ffmpeg dekóder MOC-hoz
 Summary(pl.UTF-8):	Dekoder ffmpeg dla MOC
 Group:		Applications/Sound
 Requires:	%{name} = %{version}-%{release}
@@ -124,12 +154,17 @@ Provides:	%{name}-input = %{version}-%{release}
 This package contains module to decode WMA (and others) files. After
 install you should reload MOC player.
 
+%description ffmpeg -l hu.UTF-8
+Ez a csomag az ffmpeg dekódert tartalmazza. A telepítés után a MOC
+lejátsztót újra kell indítani.
+
 %description ffmpeg -l pl.UTF-8
 Ten pakiet zawiera moduł dekodujący pliki w formacie WMA (i nie tylko)
 Po zainstalowaniu należy uruchomić ponownie MOC.
 
 %package sndfile
 Summary:	Decoder of the sndfile formats for MoC - Music on Console
+Summary(hu.UTF-8):	sndfile dekóder MOC-hoz
 Summary(pl.UTF-8):	Dekoder plików WAV/AIFF
 Group:		Applications/Sound
 Requires:	%{name} = %{version}-%{release}
@@ -139,12 +174,17 @@ Provides:	%{name}-input = %{version}-%{release}
 This package contains the decoders of sndfile. After install you
 should reload MOC player.
 
+%description sndfile -l hu.UTF-8
+Ez a csomag az sndfile dekódert tartalmazza. A telepítés után a MOC
+lejátsztót újra kell indítani.
+
 %description sndfile -l pl.UTF-8
 Ten pakiet zapewnia dekodowanie plików WAV/AIFF. Po zainstalowaniu
 należy uruchomić ponownie MOC.
 
 %package speex
 Summary:	Speex decoder for MoC - Music on Console
+Summary(hu.UTF-8):	Speex dekóder MOC-hoz
 Summary(pl.UTF-8):	Dekoder formatu Speex dla MOC
 Group:		Applications/Sound
 Requires:	%{name} = %{version}-%{release}
@@ -153,6 +193,10 @@ Provides:	%{name}-input = %{version}-%{release}
 %description speex
 This package contains the Speex decoder. After install you should
 reload MOC player.
+
+%description speex -l hu.UTF-8
+Ez a csomag az speex dekódert tartalmazza. A telepítés után a MOC
+lejátsztót újra kell indítani.
 
 %description speex -l pl.UTF-8
 Ten pakiet zapewnia dekodowanie formatu Speex. Po zainstalowaniu
