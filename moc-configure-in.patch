@@ -1,12 +1,19 @@
---- moc-2.5.0-alpha3-orig/configure.in	2008-02-25 23:37:30.000000000 +0100
-+++ moc-2.5.0-alpha3/configure.in	2009-09-17 19:31:08.216340678 +0200
-@@ -10,6 +10,10 @@
+--- moc-2.5.0-alpha3-orig/configure.in	2009-09-20 09:57:33.897195771 +0200
++++ moc-2.5.0-alpha3/configure.in	2009-09-20 10:16:55.600413103 +0200
+@@ -1,6 +1,9 @@
+ AC_INIT([moc],[2.5.0-alpha3],[daper@daper.net])
+ AC_CONFIG_SRCDIR([main.c])
+ AC_CONFIG_HEADERS([config.h])
++AC_CONFIG_AUX_DIR([libltdl/config])
++AC_CONFIG_MACRO_DIR([libltdl/m4])
++LT_CONFIG_LTDL_DIR([libltdl])
+ 
+ AM_INIT_AUTOMAKE
+ 
+@@ -10,6 +13,7 @@
  AC_PROG_CC
  AC_PROG_INSTALL
  
-+AC_CONFIG_MACRO_DIR([libltdl/m4])
-+LT_CONFIG_LTDL_DIR([libltdl])
-+
 +AC_PROG_CXX
  AC_PROG_AWK
  AC_LIBTOOL_DLOPEN
