@@ -1,0 +1,10 @@
+--- moc-2.5.0-alpha3-orig/Makefile.am	2009-09-20 09:57:33.890529421 +0200
++++ moc-2.5.0-alpha3/Makefile.am	2009-09-20 09:58:34.744064910 +0200
+@@ -1,6 +1,7 @@
+ SUBDIRS = themes decoder_plugins
+ AM_CPPFLAGS = -DSYSTEM_THEMES_DIR=\"$(pkgdatadir)/themes\" \
+ 	      -DPLUGIN_DIR=\"$(plugindir)/$(DECODER_PLUGIN_DIR)\"
++ACLOCAL_AMFLAGS=-I libltdl/m4
+ 
+ bin_PROGRAMS = mocp
+ mocp_SOURCES = log.c \
