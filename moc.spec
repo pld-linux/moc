@@ -16,6 +16,7 @@ Source0:	ftp://ftp.daper.net/pub/soft/moc/unstable/%{name}-%{version}-%{develver
 Patch0:		%{name}-home_etc.patch
 Patch1:		%{name}-configure-in.patch
 Patch2:		%{name}-ffmpeg.patch
+Patch3:		%{name}-makefile-am.patch
 URL:		http://moc.daper.net/
 BuildRequires:	a52dec-libs-devel
 BuildRequires:	alsa-lib-devel
@@ -210,9 +211,10 @@ należy uruchomić ponownie MOC.
 %{?with_home_etc:%patch0 -p1}
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
-CFLAGS="-I/usr/include/ncurses -I/usr/include/libavformat %{rpmcflags}"
+CFLAGS="-I/usr/include/ncurses -I/usr/include/libavformat -I/usr/include/libltdl %{rpmcflags}"
 
 %{__libtoolize}
 %{__aclocal} -I m4 -I libltdl/m4
