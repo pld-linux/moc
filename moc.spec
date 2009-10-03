@@ -3,16 +3,17 @@
 %bcond_without	home_etc    # disable HOME_ETC support
 #
 %define develversion alpha3
+%define trunk 2201
 Summary:	Console audio player with simple ncurses interface
 Summary(hu.UTF-8):	Konzolos audiólejátszó egyszerű ncurses felülettel
 Summary(pl.UTF-8):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
 Version:	2.5.0
-Release:	%{develversion}.1
+Release:	%{develversion}trunk%{trunk}.1
 License:	GPL
 Group:		Applications/Sound
-Source0:	ftp://ftp.daper.net/pub/soft/moc/unstable/%{name}-%{version}-%{develversion}.tar.bz2
-# Source0-md5:	3621b5b065570f961125b010a02d6dd5
+Source0:	http://carme.pld-linux.org/~uzsolt/sources/%{name}-%{version}-%{develversion}-%{trunk}.tar.bz2
+# Source0-md5:	04aab21ee3cb86f23fbebbf42a25370b
 Patch0:		%{name}-home_etc.patch
 Patch1:		%{name}-configure-in.patch
 Patch2:		%{name}-ffmpeg.patch
@@ -65,6 +66,36 @@ Speex, WAV oraz inne mniej popularne formaty wspierane przez
 bibliotekę libsndfile. Ma wszystkie funkcje, których można spodziewać
 się w prostym odtwarzaczu audio. Teraz także obsługuje strumienie
 sieciowe (shoutcast, icecast, HTTP, FTP).
+
+%package aac
+Summary:	AAC decoder for MoC
+Summary(hu.UTF-8):	AAC formátum támogatása MoC-hoz
+Group:		Applications/Sound
+Requires:	%{name} = %{version}-%{release}
+Provides:	%{name}-input = %{version}-%{release}
+
+%description aac
+This package contains the AAC decoder. After install you should reload
+MOC player.
+
+%description aac -l hu.UTF-8
+Ez a csomag az AAC dekódert tartalmazza. A telepítés után a MOC
+lejátsztót újra kell indítani.
+
+%package modplug
+Summary:	modplug decoder for MoC
+Summary(hu.UTF-8):	modplug formátum támogatása MoC-hoz
+Group:		Applications/Sound
+Requires:	%{name} = %{version}-%{release}
+Provides:	%{name}-input = %{version}-%{release}
+
+%description modplug
+This package contains the modplug decoder. After install you should
+reload MOC player.
+
+%description modplug -l hu.UTF-8
+Ez a csomag a modplug dekódert tartalmazza. A telepítés után a MOC
+lejátsztót újra kell indítani.
 
 %package mp3
 Summary:	MP3 decoder for MoC - Music on Console
@@ -146,6 +177,36 @@ lejátsztót újra kell indítani.
 Ten pakiet zawiera dekodowanie formatu FLAC. Po zainstalowaniu należy
 uruchomić ponownie MOC.
 
+%package timidity
+Summary:	timidity decoder for MoC
+Summary(hu.UTF-8):	timidity formátum támogatása MoC-hoz
+Group:		Applications/Sound
+Requires:	%{name} = %{version}-%{release}
+Provides:	%{name}-input = %{version}-%{release}
+
+%description timidity
+This package contains the timidity decoder. After install you should
+reload MOC player.
+
+%description timidity -l hu.UTF-8
+Ez a csomag a timidity dekódert tartalmazza. A telepítés után a MOC
+lejátsztót újra kell indítani.
+
+%package wavpack
+Summary:	wavpack decoder for MoC
+Summary(hu.UTF-8):	wavpack formátum támogatása MoC-hoz
+Group:		Applications/Sound
+Requires:	%{name} = %{version}-%{release}
+Provides:	%{name}-input = %{version}-%{release}
+
+%description wavpack
+This package contains the wavpack decoder. After install you should
+reload MOC player.
+
+%description wavpack -l hu.UTF-8
+Ez a csomag a wavpack dekódert tartalmazza. A telepítés után a MOC
+lejátsztót újra kell indítani.
+
 %package ffmpeg
 Summary:	ffmpeg decoder for MoC - Music on Console
 Summary(hu.UTF-8):	ffmpeg dekóder MOC-hoz
@@ -207,10 +268,10 @@ Ten pakiet zapewnia dekodowanie formatu Speex. Po zainstalowaniu
 należy uruchomić ponownie MOC.
 
 %prep
-%setup -q -n %{name}-%{version}-%{develversion}
+%setup -q -n %{name}-%{version}-%{develversion}-%{trunk}
 %{?with_home_etc:%patch0 -p1}
 %patch1 -p1
-%patch2 -p1
+# %patch2 -p1
 %patch3 -p1
 
 %build
@@ -222,7 +283,7 @@ CFLAGS="-I/usr/include/ncurses -I/usr/include/libavformat -I/usr/include/libltdl
 %{__autoconf}
 %{__automake}
 %configure \
-	--disable-debug
+	--disable-debug --enable-ltdl-install
 
 %{__make}
 
@@ -251,6 +312,22 @@ rm -rf $RPM_BUILD_ROOT
 %files musepack
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_decoder_plugins}/libmusepack_decoder.so*
+
+%files aac
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_decoder_plugins}/libaac_decoder.so*
+
+%files modplug
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_decoder_plugins}/libmodplug_decoder.so*
+
+%files timidity
+%defattr(644,root,root,755)
+# %attr(755,root,root) %{_decoder_plugins}/libtimidity_decoder.so*
+
+%files wavpack
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_decoder_plugins}/libwavpack_decoder.so*
 
 %files flac
 %defattr(644,root,root,755)
