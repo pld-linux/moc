@@ -24,6 +24,7 @@ BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	curl-devel
+BuildRequires:	doxygen
 BuildRequires:	ffmpeg-devel >= 0.4.9-4.20080822.1
 BuildRequires:	flac-devel >= 1.1.3
 BuildRequires:	libao-devel
@@ -267,6 +268,18 @@ lejátsztót újra kell indítani.
 Ten pakiet zapewnia dekodowanie formatu Speex. Po zainstalowaniu
 należy uruchomić ponownie MOC.
 
+%package doc
+Summary:	Technical informations
+Summary(hu.UTF-8):	Technikai információk
+Group:		Documentation
+Requires:	%{name} = %{version}-%{release}
+
+%description doc
+Technical informations.
+
+%description doc -l hu.UTF-8
+Technikai információk.
+
 %prep
 %setup -q -n %{name}-%{version}-%{develversion}-%{trunk}
 %{?with_home_etc:%patch0 -p1}
@@ -286,13 +299,18 @@ CFLAGS="-I/usr/include/ncurses -I/usr/include/libavformat -I/usr/include/libltdl
 	--disable-debug --enable-ltdl-install
 
 %{__make}
+doxygen
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/%{_docdir}/%{name}-%{version}/technical
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+install AUTHORS NEWS README THANKS TODO *.example $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
+cp -r technical_docs/* $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/technical
 
 rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}
 rm -f $RPM_BUILD_ROOT%{_decoder_plugins}/lib*.la
@@ -302,12 +320,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README THANKS TODO *.example
+%exclude %{_docdir}/%{name}-%{version}/technical
+%doc %{_docdir}/%{name}-%{version}
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/moc
 %dir %{_libdir}/moc/decoder_plugins
 %{_datadir}/%{name}
 %{_mandir}/man1/mocp*
+
+%files doc
+%defattr(644,root,root,755)
+%doc %{_docdir}/%{name}-%{version}/technical
 
 %files musepack
 %defattr(644,root,root,755)
