@@ -34,6 +34,7 @@ BuildRequires:	libmad-devel
 BuildRequires:	libmpcdec-devel >= 1.2
 BuildRequires:	libsamplerate-devel
 BuildRequires:	libsndfile-devel
+BuildRequires:	libtimidity-devel
 BuildRequires:	libtool
 BuildRequires:	libvorbis-devel
 BuildRequires:	ncurses-devel
@@ -346,7 +347,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files timidity
 %defattr(644,root,root,755)
-# %attr(755,root,root) %{_decoder_plugins}/libtimidity_decoder.so*
+%attr(755,root,root) %{_decoder_plugins}/libtimidity_decoder.so*
 
 %files wavpack
 %defattr(644,root,root,755)
