@@ -8,11 +8,11 @@ Summary:	Console audio player with simple ncurses interface
 Summary(hu.UTF-8):	Konzolos audiólejátszó egyszerű ncurses felülettel
 Summary(pl.UTF-8):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
-Version:	2.5.0
-Release:	%{develversion}trunk%{trunk}.1
+Version:	2.5.0_%{develversion}_%{trunk}
+Release:	1
 License:	GPL
 Group:		Applications/Sound
-Source0:	http://carme.pld-linux.org/~uzsolt/sources/%{name}-%{version}-%{develversion}-%{trunk}.tar.bz2
+Source0:	http://carme.pld-linux.org/~uzsolt/sources/%{name}-2.5.0-%{develversion}-%{trunk}.tar.bz2
 # Source0-md5:	04aab21ee3cb86f23fbebbf42a25370b
 Patch0:		%{name}-home_etc.patch
 Patch1:		%{name}-configure-in.patch
@@ -283,7 +283,7 @@ Technical informations.
 Technikai információk.
 
 %prep
-%setup -q -n %{name}-%{version}-%{develversion}-%{trunk}
+%setup -q -n %{name}-2.5.0-%{develversion}-%{trunk}
 %{?with_home_etc:%patch0 -p1}
 %patch1 -p1
 # %patch2 -p1
