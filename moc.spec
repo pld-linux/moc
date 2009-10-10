@@ -31,6 +31,7 @@ BuildRequires:	libao-devel
 BuildRequires:	libid3tag-devel
 BuildRequires:	libltdl-devel
 BuildRequires:	libmad-devel
+BuildRequires:	libmodplug-devel
 BuildRequires:	libmpcdec-devel >= 1.2
 BuildRequires:	libsamplerate-devel
 BuildRequires:	libsndfile-devel
