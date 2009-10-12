@@ -2,18 +2,18 @@
 # bconds:
 %bcond_without	home_etc    # disable HOME_ETC support
 #
-%define develversion alpha3
+%define develversion alpha4
 %define trunk 2201
 Summary:	Console audio player with simple ncurses interface
 Summary(hu.UTF-8):	Konzolos audiólejátszó egyszerű ncurses felülettel
 Summary(pl.UTF-8):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
-Version:	2.5.0_%{develversion}_%{trunk}
+Version:	2.5.0_%{develversion}
 Release:	1
 License:	GPL
 Group:		Applications/Sound
-Source0:	http://carme.pld-linux.org/~uzsolt/sources/%{name}-2.5.0-%{develversion}-%{trunk}.tar.bz2
-# Source0-md5:	04aab21ee3cb86f23fbebbf42a25370b
+Source0:	ftp://ftp.daper.net/pub/soft/moc/unstable/%{name}-2.5.0-alpha4.tar.bz2
+# Source0-md5:	2dd0cb6481d77fda09c58ec3154a21c0
 Patch0:		%{name}-home_etc.patch
 Patch1:		%{name}-configure-in.patch
 Patch2:		%{name}-ffmpeg.patch
@@ -283,7 +283,7 @@ Technical informations.
 Technikai információk.
 
 %prep
-%setup -q -n %{name}-2.5.0-%{develversion}-%{trunk}
+%setup -q -n %{name}-2.5.0-%{develversion}
 %{?with_home_etc:%patch0 -p1}
 %patch1 -p1
 # %patch2 -p1
