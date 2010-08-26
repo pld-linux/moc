@@ -206,6 +206,17 @@ należy uruchomić ponownie MOC.
 %setup -q
 %{?with_home_etc:%patch0 -p1}
 
+
+rm -rf libltdl
+%{__sed} -i -e '/SUBDIRS/ s/libltdl//' Makefile.am
+%{__sed} -i -e '
+	/LT_CONFIG_LTDL_DIR/d
+	/LT_INIT/d
+	/LTDL_INIT/d
+	/AC_CONFIG_AUX_DIR/d
+	/AC_CONFIG_MACRO_DIR/d
+' configure.in
+
 %build
 CFLAGS="-I/usr/include/ncurses %{rpmcflags}"
 
@@ -216,7 +227,8 @@ CFLAGS="-I/usr/include/ncurses %{rpmcflags}"
 %configure \
 	--disable-debug
 
-%{__make}
+%{__make} \
+	LIBLTDL=-lltdl
 
 %install
 rm -rf $RPM_BUILD_ROOT
