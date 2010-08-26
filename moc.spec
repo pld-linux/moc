@@ -7,12 +7,13 @@ Summary(hu.UTF-8):	Konzolos audiólejátszó egyszerű ncurses felülettel
 Summary(pl.UTF-8):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
 Version:	2.4.4
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Sound
 Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
 # Source0-md5:	647c770a5542a4ae5437386807a89796
 Patch0:		%{name}-home_etc.patch
+Patch1:		ncurses-tinfo.patch
 URL:		http://moc.daper.net/
 BuildRequires:	a52dec-libs-devel
 BuildRequires:	alsa-lib-devel
@@ -205,6 +206,7 @@ należy uruchomić ponownie MOC.
 %prep
 %setup -q
 %{?with_home_etc:%patch0 -p1}
+%patch1 -p1
 
 
 rm -rf libltdl

@@ -1,0 +1,36 @@
+--- moc-2.4.4/m4/mp_with_curses.m4~	2006-02-12 13:55:08.000000000 +0200
++++ moc-2.4.4/m4/mp_with_curses.m4	2010-08-27 00:08:09.671905405 +0300
+@@ -38,7 +38,7 @@
+ 	     	[Define if you have ncursesw.h]))
+ 	     AC_DEFINE(HAVE_NCURSES_H, 1, [Define if you have ncursesw/curses.h])
+ 	     AC_DEFINE(HAVE_NCURSESW, 1, [Define if you have libncursesw])
+-	     CURSES_LIB="-lncursesw"
++	     CURSES_LIB="-lncursesw -ltinfow"
+ 	   fi
+    fi
+  
+@@ -53,13 +53,13 @@
+      if test "$mp_cv_curses" = yes
+      then
+        AC_DEFINE(HAVE_CURSES_H, 1, [Define if you have curses.h])
+-       CURSES_LIB="-lcurses"
++       CURSES_LIB="-lcurses -ltinfo"
+      fi
+    fi
+    if test ! "$CURSES_LIB"
+    then
+      AC_CACHE_CHECK([for working ncurses], mp_cv_ncurses,
+-       [LIBS="$mp_save_LIBS -lncurses"
++       [LIBS="$mp_save_LIBS -lncurses -ltinfo"
+         AC_TRY_LINK(
+           [#include <ncurses.h>],
+           [chtype a; int b=A_STANDOUT, c=KEY_LEFT; initscr(); ],
+@@ -67,7 +67,7 @@
+      if test "$mp_cv_ncurses" = yes
+      then
+        AC_DEFINE(HAVE_NCURSES_H, 1, [Define if you have ncurses.h])
+-       CURSES_LIB="-lncurses"
++       CURSES_LIB="-lncurses -ltinfo"
+      fi
+    fi
+    LIBS="$mp_save_LIBS"
