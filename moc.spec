@@ -1,6 +1,7 @@
 #
 # bconds:
 %bcond_without	home_etc    # disable HOME_ETC support
+%bcond_without	ffmpeg      # disable ffmpeg
 #
 Summary:	Console audio player with simple ncurses interface
 Summary(hu.UTF-8):	Konzolos audiólejátszó egyszerű ncurses felülettel
@@ -20,7 +21,7 @@ BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	curl-devel
-BuildRequires:	ffmpeg-devel >= 0.4.9-4.20080822.1
+%{?with_ffmpeg:BuildRequires:	ffmpeg-devel >= 0.4.9-4.20080822.1}
 BuildRequires:	flac-devel >= 1.1.3
 BuildRequires:	libao-devel
 BuildRequires:	libid3tag-devel
@@ -227,6 +228,7 @@ CFLAGS="-I/usr/include/ncurses %{rpmcflags}"
 %{__autoconf}
 %{__automake}
 %configure \
+	%{!?with_ffmpeg:--without-ffmpeg} \
 	--disable-debug
 
 %{__make} \
@@ -262,9 +264,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_decoder_plugins}/libflac_decoder.so*
 
+%if %{with ffmpeg}
 %files ffmpeg
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_decoder_plugins}/libffmpeg_decoder.so
+%endif
 
 %files mp3
 %defattr(644,root,root,755)
