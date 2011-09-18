@@ -1,0 +1,48 @@
+From c8b7df0b53d53eb6c1724d49474b856b229acca4 Mon Sep 17 00:00:00 2001
+From: Eugeny A. Rostovtsev <real@altlinux.org>
+Date: Wed, 17 Aug 2011 06:22:09 +0000
+Subject: [PATCH] Fix for new ffmpeg
+
+---
+ moc/decoder_plugins/ffmpeg/ffmpeg.c |   18 +++++++++---------
+ 1 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/moc/decoder_plugins/ffmpeg/ffmpeg.c b/moc/decoder_plugins/ffmpeg/ffmpeg.c
+index 1f78145..c4c1f57 100644
+--- a/moc/decoder_plugins/ffmpeg/ffmpeg.c
++++ b/moc/decoder_plugins/ffmpeg/ffmpeg.c
+@@ -86,14 +86,14 @@ static void ffmpeg_info (const char *file_name,
+ 	}
+ 
+ 	if (tags_sel & TAGS_COMMENTS) {
+-		if (ic->track != 0)
+-			info->track = ic->track;
+-		if (ic->title[0] != 0)
+-			info->title = xstrdup (ic->title);
+-		if (ic->author[0] != 0)
+-			info->artist = xstrdup (ic->author);
+-		if (ic->album[0] != 0)
+-			info->album = xstrdup (ic->album);
++		if (av_metadata_get(ic->metadata, "track", NULL, 0) != NULL)
++			info->track = atoi(av_metadata_get(ic->metadata, "track", NULL, 0)->value);
++		if (av_metadata_get(ic->metadata, "title", NULL, 0) != NULL)
++			info->title = xstrdup (av_metadata_get(ic->metadata, "titke", NULL, 0)->value);
++		if (av_metadata_get(ic->metadata, "author", NULL, 0) != NULL)
++			info->artist = xstrdup (av_metadata_get(ic->metadata, "author", NULL, 0)->value);
++		if (av_metadata_get(ic->metadata, "album", NULL, 0) != NULL)
++			info->album = xstrdup (av_metadata_get(ic->metadata, "album", NULL, 0)->value);
+ 	}
+ 
+ 	if (tags_sel & TAGS_TIME)
+@@ -132,7 +132,7 @@ static void *ffmpeg_open (const char *file)
+ 	av_read_play (data->ic);
+ 	for (i = 0; i < data->ic->nb_streams; i++) {
+ 		data->enc = data->ic->streams[i]->codec;
+-		if (data->enc->codec_type == CODEC_TYPE_AUDIO) {
++		if (data->enc->codec_type == AVMEDIA_TYPE_AUDIO) {
+ 			audio_index = i;
+ 			break;
+ 		}
+-- 
+1.7.3.3
+
