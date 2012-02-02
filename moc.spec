@@ -14,8 +14,7 @@ Group:		Applications/Sound
 Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
 # Source0-md5:	647c770a5542a4ae5437386807a89796
 Patch0:		%{name}-home_etc.patch
-Patch1:		ncurses-tinfo.patch
-Patch2:		ffmpeg071.patch
+Patch1:		ffmpeg071.patch
 URL:		http://moc.daper.net/
 BuildRequires:	a52dec-libs-devel
 BuildRequires:	alsa-lib-devel
@@ -208,8 +207,7 @@ należy uruchomić ponownie MOC.
 %prep
 %setup -q
 %{?with_home_etc:%patch0 -p1}
-%patch1 -p1
-%patch2 -p2
+%patch1 -p2
 
 rm -rf libltdl
 %{__sed} -i -e '/SUBDIRS/ s/libltdl//' Makefile.am
