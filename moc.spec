@@ -1,20 +1,21 @@
 #
 # bconds:
-%bcond_without	home_etc    # disable HOME_ETC support
+%bcond_with	home_etc    # enable HOME_ETC support
 %bcond_without	ffmpeg      # disable ffmpeg
 #
 Summary:	Console audio player with simple ncurses interface
 Summary(hu.UTF-8):	Konzolos audiólejátszó egyszerű ncurses felülettel
 Summary(pl.UTF-8):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
-Version:	2.4.4
-Release:	10
+Version:	2.5.0
+%define	pre	beta1
+Release:	0.%{pre}.1
 License:	GPL
 Group:		Applications/Sound
-Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	647c770a5542a4ae5437386807a89796
+#Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.daper.net/pub/soft/moc/unstable/%{name}-%{version}-%{pre}.tar.bz2
+# Source0-md5:	795ecba86847e082aa2f21937cc04804
 Patch0:		%{name}-home_etc.patch
-Patch1:		ffmpeg071.patch
 URL:		http://moc.daper.net/
 BuildRequires:	a52dec-libs-devel
 BuildRequires:	alsa-lib-devel
@@ -63,6 +64,26 @@ Speex, WAV oraz inne mniej popularne formaty wspierane przez
 bibliotekę libsndfile. Ma wszystkie funkcje, których można spodziewać
 się w prostym odtwarzaczu audio. Teraz także obsługuje strumienie
 sieciowe (shoutcast, icecast, HTTP, FTP).
+
+%package aac
+Summary:	AAC decoder for MoC - Music on Console
+Summary(hu.UTF-8):	AAC formátum támogatása MoC-hoz
+Summary(pl.UTF-8):	Dekoder AAC dla MOC
+Group:		Applications/Sound
+Requires:	%{name} = %{version}-%{release}
+Provides:	%{name}-input = %{version}-%{release}
+
+%description aac
+This package contains the AAC decoder. After install you should reload
+MOC player.
+
+%description aac -l hu.UTF-8
+Ez a csomag az AAC dekódert tartalmazza. A telepítés után a MOC
+lejátsztót újra kell indítani.
+
+%description aac -l pl.UTF-8
+Ten pakiet zawiera dekodowanie formatu AAC. Po zainstalowaniu należy
+uruchomić ponownie MOC.
 
 %package mp3
 Summary:	MP3 decoder for MoC - Music on Console
@@ -204,10 +225,49 @@ lejátsztót újra kell indítani.
 Ten pakiet zapewnia dekodowanie formatu Speex. Po zainstalowaniu
 należy uruchomić ponownie MOC.
 
+%package modplug
+Summary:	ModPlug decoder for MoC - Music on Console
+Summary(hu.UTF-8):	ModPlug dekóder MOC-hoz
+Summary(pl.UTF-8):	Dekoder formatów ModPlug dla MOC
+Group:		Applications/Sound
+Requires:	%{name} = %{version}-%{release}
+Provides:	%{name}-input = %{version}-%{release}
+
+%description modplug
+This package contains the ModPlug decoder. After install you should
+reload MOC player.
+
+%description modplug -l hu.UTF-8
+Ez a csomag az ModPlug dekódert tartalmazza. A telepítés után a MOC
+lejátsztót újra kell indítani.
+
+%description modplug -l pl.UTF-8
+Ten pakiet zapewnia dekodowanie formatów ModPlug. Po zainstalowaniu
+należy uruchomić ponownie MOC.
+
+%package wavpack
+Summary:	WavPack decoder for MoC - Music on Console
+Summary(hu.UTF-8):	WavPack dekóder MOC-hoz
+Summary(pl.UTF-8):	Dekoder formatu WavPack dla MOC
+Group:		Applications/Sound
+Requires:	%{name} = %{version}-%{release}
+Provides:	%{name}-input = %{version}-%{release}
+
+%description wavpack
+This package contains the WavPack decoder. After install you should
+reload MOC player.
+
+%description wavpack -l hu.UTF-8
+Ez a csomag az WavPack dekódert tartalmazza. A telepítés után a MOC
+lejátsztót újra kell indítani.
+
+%description wavpack -l pl.UTF-8
+Ten pakiet zapewnia dekodowanie formatu WavPack. Po zainstalowaniu
+należy uruchomić ponownie MOC.
+
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-%{pre}
 %{?with_home_etc:%patch0 -p1}
-%patch1 -p2
 
 rm -rf libltdl
 %{__sed} -i -e '/SUBDIRS/ s/libltdl//' Makefile.am
@@ -269,6 +329,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_decoder_plugins}/libffmpeg_decoder.so
 %endif
 
+%files aac
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_decoder_plugins}/libaac_decoder.so*
+
 %files mp3
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_decoder_plugins}/libmp3_decoder.so*
@@ -279,8 +343,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files sndfile
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_decoder_plugins}/libsndfile_formats_decoder.so*
+%attr(755,root,root) %{_decoder_plugins}/libsndfile_decoder.so*
 
 %files speex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_decoder_plugins}/libspeex_decoder.so*
+
+%files modplug
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_decoder_plugins}/libmodplug_decoder.so*
+
+%files wavpack
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_decoder_plugins}/libwavpack_decoder.so*
