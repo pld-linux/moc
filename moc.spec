@@ -2,18 +2,19 @@
 # bconds:
 %bcond_with	home_etc    # enable HOME_ETC support
 %bcond_without	ffmpeg      # disable ffmpeg
-#
+
+%define	subver	beta1
+%define	rel		3
 Summary:	Console audio player with simple ncurses interface
 Summary(hu.UTF-8):	Konzolos audiólejátszó egyszerű ncurses felülettel
 Summary(pl.UTF-8):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
 Version:	2.5.0
-%define	pre	beta1
-Release:	0.%{pre}.2
+Release:	0.%{subver}.%{rel}
 License:	GPL
 Group:		Applications/Sound
 #Source0:	ftp://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
-Source0:	ftp://ftp.daper.net/pub/soft/moc/unstable/%{name}-%{version}-%{pre}.tar.bz2
+Source0:	ftp://ftp.daper.net/pub/soft/moc/unstable/%{name}-%{version}-%{subver}.tar.bz2
 # Source0-md5:	795ecba86847e082aa2f21937cc04804
 Patch0:		%{name}-home_etc.patch
 URL:		http://moc.daper.net/
@@ -266,7 +267,7 @@ Ten pakiet zapewnia dekodowanie formatu WavPack. Po zainstalowaniu
 należy uruchomić ponownie MOC.
 
 %prep
-%setup -q -n %{name}-%{version}-%{pre}
+%setup -q -n %{name}-%{version}-%{subver}
 %{?with_home_etc:%patch0 -p1}
 
 rm -rf libltdl
