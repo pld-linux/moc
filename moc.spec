@@ -4,7 +4,7 @@
 %bcond_without	ffmpeg      # disable ffmpeg
 
 %define	subver	beta1
-%define	rel		3
+%define	rel		4
 Summary:	Console audio player with simple ncurses interface
 Summary(hu.UTF-8):	Konzolos audiólejátszó egyszerű ncurses felülettel
 Summary(pl.UTF-8):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
