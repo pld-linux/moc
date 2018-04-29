@@ -1,0 +1,42 @@
+--- moc-2.5.0/decoder_plugins/ffmpeg/ffmpeg.c~	2018-04-29 21:54:01.000000000 +0200
++++ moc-2.5.0/decoder_plugins/ffmpeg/ffmpeg.c	2018-04-29 22:01:20.762926575 +0200
+@@ -978,7 +978,7 @@
+ 	 * FFmpeg/LibAV in use.  For some versions this will be caught in
+ 	 * *_find_stream_info() above and misreported as an unfound codec
+ 	 * parameters error. */
+-	if (data->codec->capabilities & CODEC_CAP_EXPERIMENTAL) {
++	if (data->codec->capabilities & AV_CODEC_CAP_EXPERIMENTAL) {
+ 		decoder_error (&data->error, ERROR_FATAL, 0,
+ 				"The codec is experimental and may damage MOC: %s",
+ 				data->codec->name);
+@@ -987,8 +987,8 @@
+ #endif
+ 
+ 	set_downmixing (data);
+-	if (data->codec->capabilities & CODEC_CAP_TRUNCATED)
+-		data->enc->flags |= CODEC_FLAG_TRUNCATED;
++	if (data->codec->capabilities & AV_CODEC_CAP_TRUNCATED)
++		data->enc->flags |= AV_CODEC_FLAG_TRUNCATED;
+ 
+ #ifdef HAVE_AVCODEC_OPEN2
+ 	if (avcodec_open2 (data->enc, data->codec, NULL) < 0)
+@@ -1019,7 +1019,7 @@
+ 
+ 	data->sample_width = sfmt_Bps (data->fmt);
+ 
+-	if (data->codec->capabilities & CODEC_CAP_DELAY)
++	if (data->codec->capabilities & AV_CODEC_CAP_DELAY)
+ 		data->delay = true;
+ 	data->seek_broken = is_seek_broken (data);
+ 	data->timing_broken = is_timing_broken (data->ic);
+--- moc-2.5.0/decoder_plugins/ffmpeg/ffmpeg.m4~	2014-08-30 04:32:27.000000000 +0200
++++ moc-2.5.0/decoder_plugins/ffmpeg/ffmpeg.m4	2018-04-29 22:02:04.057134940 +0200
+@@ -185,7 +185,7 @@
+ 		                 [#include <libavcodec/avcodec.h>])
+ 		AC_CHECK_DECLS([AV_SAMPLE_FMT_FLTP], , ,
+ 		                 [#include <libavcodec/avcodec.h>])
+-		AC_CHECK_DECLS([CODEC_CAP_EXPERIMENTAL], , ,
++		AC_CHECK_DECLS([AV_CODEC_CAP_EXPERIMENTAL], , ,
+ 		                 [#include <libavcodec/avcodec.h>])
+ 		AC_SEARCH_LIBS(av_get_sample_fmt_name, avutil,
+ 			[AC_DEFINE([HAVE_AV_GET_SAMPLE_FMT_NAME], 1,

@@ -8,13 +8,14 @@ Summary(hu.UTF-8):	Konzolos audiólejátszó egyszerű ncurses felülettel
 Summary(pl.UTF-8):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
 Version:	2.5.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Sound
 Source0:	http://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
 # Source0-md5:	18e3a979b67091bfee4b62217908c473
 Patch0:		%{name}-home_etc.patch
 Patch1:		ffmpeg3.patch
+Patch2:		ffmpeg4.patch
 URL:		http://moc.daper.net/
 BuildRequires:	a52dec-libs-devel
 BuildRequires:	alsa-lib-devel
@@ -268,6 +269,7 @@ należy uruchomić ponownie MOC.
 %setup -q
 %{?with_home_etc:%patch0 -p1}
 %patch1 -p1
+%patch2 -p1
 
 rm -rf libltdl
 %{__sed} -i -e '/SUBDIRS/ s/libltdl//' Makefile.am
