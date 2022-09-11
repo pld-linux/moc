@@ -8,7 +8,7 @@ Summary(hu.UTF-8):	Konzolos audiólejátszó egyszerű ncurses felülettel
 Summary(pl.UTF-8):	Konsolowy odtwarzacz audio z prostym interfejsem ncurses
 Name:		moc
 Version:	2.5.0
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Sound
 Source0:	http://ftp.daper.net/pub/soft/moc/stable/%{name}-%{version}.tar.bz2
